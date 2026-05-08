@@ -1,2 +1,164 @@
-# orange-agent
-橙子
+
+---
+
+## 三、自然语言快捷操作
+
+直接说话即可触发，无需输入指令：
+
+| 你说 | 自动执行 |
+|------|---------|
+| "打开微信" | 启动微信 |
+| "打开 Chrome" | 启动浏览器 |
+| "查看进程" | `ps` |
+| "清空对话" | `clear` |
+| "有什么技能" | `skills` |
+| "系统状态" | `status` |
+| "怎么用" | `help` |
+| "切换联网模式" | `config mode api` |
+| "切换本地模式" | `config mode ollama` |
+| "修改配置" | `config set` |
+| "安装技能 XXX" | `skill install XXX` |
+| "搜索技能 XXX" | `skill search XXX` |
+| "整理桌面" | 预览 → 确认 → 执行整理 |
+
+---
+
+## 四、基础技能
+
+### 🖥️ 系统信息
+
+| 技能 | 触发示例 |
+|------|---------|
+| 获取系统信息 | "我的电脑配置怎么样"、"查看系统信息" |
+| 获取时间 | "现在几点了"、"今天几号" |
+| 查看进程 | "有什么程序在运行"、"查看进程" |
+| 执行命令 | "执行 ipconfig" |
+
+### 📁 文件操作
+
+| 技能 | 触发示例 |
+|------|---------|
+| 列出文件 | "桌面有哪些文件"、"下载目录有什么" |
+| 读取文件 | "帮我读一下 config.yaml" |
+| 写入文件 | "创建一个 test.txt 写入 Hello" |
+| 搜索文件 | "搜索D盘的PDF文件"、"找一下昨天的日志" |
+
+### 🧹 桌面整理
+
+| 技能 | 触发示例 |
+|------|---------|
+| 整理桌面 | "整理桌面"、"帮我整理桌面" |
+| 还原桌面 | "还原桌面"、"确认还原桌面" |
+
+整理后桌面文件按类型自动归类：图片、文档、压缩包、视频、音乐、程序、代码等。
+
+### 🌐 网页与搜索
+
+| 技能 | 触发示例 |
+|------|---------|
+| 网页搜索 | "百度查一下 Python 教程"、"搜一下天气" |
+| 打开网址 | "打开 github.com" |
+| HTTP 请求 | "请求这个API接口" |
+
+### 📊 报告导出
+
+| 技能 | 触发示例 |
+|------|---------|
+| 导出报告 | "帮我分析C盘空间，导出为 markdown 报告" |
+
+支持 `md` `html` `txt` 格式，默认保存到桌面 `CLAW_Reports` 文件夹。
+
+### 🚀 应用操作
+
+| 技能 | 触发示例 |
+|------|---------|
+| 打开软件 | "打开微信"、"打开钉钉"、"打开计算器" |
+
+### 📝 翻译与文本
+
+| 技能 | 触发示例 |
+|------|---------|
+| 翻译 | "把这段话翻译成英文" |
+| 文本总结 | "总结一下这段内容" |
+
+### 🔢 计算器
+
+| 技能 | 触发示例 |
+|------|---------|
+| 计算 | "计算 (123+456)*789" |
+
+### 🎉 娱乐
+
+| 技能 | 触发示例 |
+|------|---------|
+| 讲笑话 | "讲个笑话"、"来个程序员笑话" |
+
+---
+
+## 五、技能管理
+
+### 技能热加载
+
+- **新增技能**：在 `skills/` 目录下新建 `.py` 或 `.md` 文件，**2秒内自动加载生效**
+- **修改技能**：编辑已有技能文件，保存后自动更新
+- **删除技能**：删除文件或文件夹，自动卸载
+- **手动刷新**：输入 `reload`
+
+
+### 技能类型
+
+| 类型 | 文件格式 | 说明 |
+|------|---------|------|
+| Python 技能 | `.py` | 复杂逻辑（文件操作、系统调用等） |
+| Markdown 技能 | `.md` | 纯对话型（翻译、总结、笑话等） |
+
+### 技能计数规则
+
+- 一个 `.py` 文件 = 一个技能
+- 一个 `.md` 文件 = 一个技能
+- 含 `SKILL.md` 的文件夹 = 一个技能（整体计为一个）
+
+---
+
+## 六、配置文件说明
+
+```yaml
+# 运行模式
+llm:
+  mode: "api"              # api = 联网模式 / ollama = 本地模式
+  
+  # 通义千问
+  qwen_api_key: "sk-xxx"
+  qwen_base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  qwen_model: "qwen2.5-14b-instruct"
+  
+  # DeepSeek
+  deepseek_api_key: "sk-xxx"
+  deepseek_base_url: "https://api.deepseek.com/v1"
+  deepseek_model: "deepseek-chat"
+  
+  # 豆包
+  doubao_api_key: "sk-xxx"
+  doubao_base_url: "https://ark.cn-beijing.volces.com/api/v3"
+  doubao_model: "doubao-seed-2-0-pro"
+  
+  # OpenAI / 第三方中转
+  api_key: "sk-xxx"
+  base_url: "https://api.openai.com/v1"
+  model_name: "gpt-3.5-turbo"
+  
+  # 本地 Ollama
+  ollama_url: "http://localhost:11434"
+  ollama_model: "qwen2.5:7b"
+
+# 引擎配置
+engine:
+  max_token: 8000          # 最大上下文 Token
+  stream_speed: 0.018      # 打字速度
+  permission_level: 2      # 0=普通 1=文件 2=系统
+  provider: "qwen"         # 当前使用的厂商
+
+# 安全配置
+security:
+  enable_danger_check: true
+  danger_cmd: ["rm", "del", "format", "sudo", "chmod"]
