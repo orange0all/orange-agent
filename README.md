@@ -1,7 +1,7 @@
 
 ---
 
-## 三、自然语言快捷操作
+## 一、自然语言快捷操作
 
 直接说话即可触发，无需输入指令：
 
@@ -23,7 +23,7 @@
 
 ---
 
-## 四、基础技能
+## 二、基础技能
 
 ### 🖥️ 系统信息
 
@@ -95,7 +95,7 @@
 
 ---
 
-## 五、技能管理
+## 三、技能管理
 
 ### 技能热加载
 
@@ -120,7 +120,7 @@
 
 ---
 
-## 六、配置文件说明
+## 四、配置文件说明
 
 ```yaml
 # 运行模式
@@ -129,36 +129,24 @@ llm:
   
   # 通义千问
   qwen_api_key: "sk-xxx"
-  qwen_base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  qwen_model: "qwen2.5-14b-instruct"
+  qwen_base_url: ""
+  qwen_model: ""
   
   # DeepSeek
   deepseek_api_key: "sk-xxx"
-  deepseek_base_url: "https://api.deepseek.com/v1"
-  deepseek_model: "deepseek-chat"
+  deepseek_base_url: ""
+  deepseek_model: "deepseek"
   
   # 豆包
   doubao_api_key: "sk-xxx"
-  doubao_base_url: "https://ark.cn-beijing.volces.com/api/v3"
-  doubao_model: "doubao-seed-2-0-pro"
+  doubao_base_url: ""
+  doubao_model: ""
   
   # OpenAI / 第三方中转
   api_key: "sk-xxx"
-  base_url: "https://api.openai.com/v1"
-  model_name: "gpt-3.5-turbo"
+  base_url: ""
+  model_name: ""
   
   # 本地 Ollama
   ollama_url: "http://localhost:11434"
   ollama_model: "qwen2.5:7b"
-
-# 引擎配置
-engine:
-  max_token: 8000          # 最大上下文 Token
-  stream_speed: 0.018      # 打字速度
-  permission_level: 2      # 0=普通 1=文件 2=系统
-  provider: "qwen"         # 当前使用的厂商
-
-# 安全配置
-security:
-  enable_danger_check: true
-  danger_cmd: ["rm", "del", "format", "sudo", "chmod"]
