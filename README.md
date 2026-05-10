@@ -151,7 +151,7 @@ llm:
   # 本地 Ollama
   ollama_url: "http://localhost:11434"
   ollama_model: "qwen2.5:7b"
-
+  ```
 
 
 ## 五、部分截图
