@@ -141,6 +141,17 @@ llm:
   doubao_api_key: "sk-xxx"
   doubao_base_url: ""
   doubao_model: ""
+
+## 五、部分截图
+
+<img width="1714" height="1056" alt="screenshot_2026-05-10_08-44-29" src="https://github.com/user-attachments/assets/aeab048b-e505-42fd-a756-82b3404b6015" />
+
+
+<img width="1828" height="1085" alt="screenshot_2026-05-10_08-44-40" src="https://github.com/user-attachments/assets/383b4b79-376a-40ca-b986-0f668eead69d" />
+
+
+<img width="1817" height="1037" alt="screenshot_2026-05-10_08-44-53" src="https://github.com/user-attachments/assets/b36de93c-a6d9-42ff-8601-1b000de372a7" />
+
   
   # OpenAI / 第三方中转
   api_key: "sk-xxx"
