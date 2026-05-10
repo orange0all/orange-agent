@@ -142,6 +142,18 @@ llm:
   doubao_base_url: ""
   doubao_model: ""
 
+
+  # OpenAI / 第三方中转
+  api_key: "sk-xxx"
+  base_url: ""
+  model_name: ""
+  
+  # 本地 Ollama
+  ollama_url: "http://localhost:11434"
+  ollama_model: "qwen2.5:7b"
+
+
+
 ## 五、部分截图
 
 <img width="1714" height="1056" alt="screenshot_2026-05-10_08-44-29" src="https://github.com/user-attachments/assets/aeab048b-e505-42fd-a756-82b3404b6015" />
@@ -151,13 +163,3 @@ llm:
 
 
 <img width="1817" height="1037" alt="screenshot_2026-05-10_08-44-53" src="https://github.com/user-attachments/assets/b36de93c-a6d9-42ff-8601-1b000de372a7" />
-
-  
-  # OpenAI / 第三方中转
-  api_key: "sk-xxx"
-  base_url: ""
-  model_name: ""
-  
-  # 本地 Ollama
-  ollama_url: "http://localhost:11434"
-  ollama_model: "qwen2.5:7b"
